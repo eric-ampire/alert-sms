@@ -4,7 +4,6 @@ import android.app.Application
 import android.content.Context
 import androidx.multidex.MultiDex
 import com.ericampire.mobile.alertsms.app.di.appModule
-import com.ericampire.mobile.alertsms.app.di.nexmoModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -18,7 +17,7 @@ class App : Application() {
         startKoin{
             androidLogger()
             androidContext(this@App)
-            modules(listOf(appModule, nexmoModule))
+            modules(listOf(appModule))
         }
     }
 
