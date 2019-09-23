@@ -1,6 +1,7 @@
 package com.ericampire.mobile.alertsms.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -29,7 +30,9 @@ class ContactAdapter(val listener: Listener) :
         holder.binding.run {
             contact = currentContact
             imageView2.setImageDrawable(drawable)
-            imageButton.setOnClickListener { listener.onContextClick(currentContact) }
+            imageButton.setOnClickListener {
+                listener.onContextClick(currentContact, imageButton)
+            }
             executePendingBindings()
         }
     }
@@ -45,7 +48,7 @@ class ContactAdapter(val listener: Listener) :
     }
 
     interface Listener {
-        fun onContextClick(item: Contact)
+        fun onContextClick(item: Contact, view: View)
     }
 
     class ContactViewHolder(val binding: ItemContactBinding) : RecyclerView.ViewHolder(binding.root)
