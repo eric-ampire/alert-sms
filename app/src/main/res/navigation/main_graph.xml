@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/main_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.ericampire.mobile.alertsms.fragment.HomeFragment"
+        android:label="Accueil" >
+        <action
+            android:id="@+id/action_setting"
+            app:destination="@id/settingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.ericampire.mobile.alertsms.fragment.SettingFragment"
+        android:label="Setting" >
+        <action
+            android:id="@+id/action_edit_fragment"
+            app:destination="@id/editContactFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/editContactFragment"
+        android:name="com.ericampire.mobile.alertsms.fragment.EditContactFragment"
+        android:label="EditContactFragment" >
+        <argument
+            app:nullable="true"
+            android:name="contact"
+            app:argType="com.ericampire.mobile.alertsms.model.Contact" />
+        <argument
+            android:name="action"
+            app:argType="string" />
+    </dialog>
+</navigation>
