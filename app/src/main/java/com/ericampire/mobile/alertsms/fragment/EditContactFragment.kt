@@ -45,8 +45,8 @@ class EditContactFragment : BottomSheetDialogFragment(), View.OnClickListener {
         val number = edNumero.text.toString()
 
         when {
-            name.isBlank()   -> edName.error = getString(R.string.txt_invalid_name)
-            number.isBlank() -> edNumero.error = getString(R.string.txt_invalid_number)
+            name.isBlank()   -> textInputLayoutName.error = getString(R.string.txt_invalid_name)
+            number.isBlank() -> textInputLayoutNumber.error = getString(R.string.txt_invalid_number)
             !number.startsWith("+") -> edNumero.error = getString(R.string.txt_invalid_code)
 
             else -> {

@@ -2,6 +2,7 @@ package com.ericampire.mobile.alertsms.fragment
 
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -30,12 +31,13 @@ class SettingFragment : Fragment(), ContactAdapter.Listener {
     override fun onCreateView(inflater: LayoutInflater, parent: ViewGroup?, state: Bundle?): View? {
         val contactAdapter = ContactAdapter(this)
         val binding = FragmentSettingBinding.inflate(inflater).apply {
-            lifecycleOwner = this@SettingFragment
+            lifecycleOwner = viewLifecycleOwner
             adapter = contactAdapter
         }
 
         contactViewModel.data.observe(this, Observer {
             it?.let(contactAdapter::submitList)
+            Log.e("ericampire", it.toString())
         })
 
         binding.fabAddContact.setOnClickListener {
